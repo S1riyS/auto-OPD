@@ -1,0 +1,2 @@
+class MainframeIsClosedException(Exception):
+    pass

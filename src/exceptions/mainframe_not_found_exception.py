@@ -1,0 +1,2 @@
+class MainframeNotFoundException(Exception):
+    pass
