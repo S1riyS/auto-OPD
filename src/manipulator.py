@@ -78,7 +78,7 @@ class MainframeManipulator:
         key_code = KEYBOARD_KEYS[key]
         win32api.keybd_event(key_code, 0, win32con.KEYEVENTF_EXTENDEDKEY, 0)
         win32api.keybd_event(key_code, 0, win32con.KEYEVENTF_KEYUP, 0)
-        time.sleep(0.01)
+        time.sleep(0.02)
 
     def press_sequence(self, sequence: t.Sequence[str]) -> None:
         for key in sequence:
