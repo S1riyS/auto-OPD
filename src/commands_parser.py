@@ -22,10 +22,23 @@ class CommandsParser:
             for line in file.readlines():
                 line = line.strip()
                 if line:
-                    address, value = line.split()
+                    instructions = line.split()
+
+                    if len(instructions) == 2:
+                        address, value = line.split()
+                        flag = None
+                    else:
+                        address, value, flag = line.split()
+
+                    if flag == '+':
+                        is_new_module = True
+                    else:
+                        is_new_module = False
+
                     commands.append(Command(
                         self.__convert_to_bin(address, target_length=16),
-                        self.__convert_to_bin(value, target_length=16)
+                        self.__convert_to_bin(value, target_length=16),
+                        is_new_module
                     ))
 
             return commands
@@ -33,6 +46,6 @@ class CommandsParser:
     def get_first_address(self) -> str:
         return self.__commands[0].address
 
-    def get_all_commands_values(self) -> t.Iterator[str]:
+    def get_all_commands(self) -> t.Iterator[Command]:
         for command in self.__commands:
-            yield command.value
+            yield command

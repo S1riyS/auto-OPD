@@ -4,8 +4,8 @@ from src.commands_parser import CommandsParser
 
 
 def main() -> None:
-    manipulator = MainframeManipulator()
     parser = CommandsParser()
+    manipulator = MainframeManipulator()
 
     manipulator.set_fullscreen_mode()
     first_address = parser.get_first_address()
@@ -13,8 +13,12 @@ def main() -> None:
     manipulator.press_sequence(first_address)
     manipulator.press_key('F4')
 
-    for command_value in parser.get_all_commands_values():
-        manipulator.press_sequence(command_value)
+    for command in parser.get_all_commands():
+        if command.is_new_module:
+            manipulator.press_sequence(command.address)
+            manipulator.press_key('F4')
+
+        manipulator.press_sequence(command.value)
         manipulator.press_key('F5')
 
     manipulator.press_sequence(first_address)
@@ -26,7 +30,7 @@ def main() -> None:
 
     print(f'Адрес первой команды: {parser.get_first_address()}\n')
     print(f'Команды:')
-    for command_value in parser.get_all_commands_values():
+    for command_value in parser.get_all_commands():
         print(command_value)
 
 
