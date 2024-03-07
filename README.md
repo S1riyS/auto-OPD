@@ -1,3 +1,6 @@
+![Windows](https://img.shields.io/badge/Windows-blue?style=for-the-badge&logo=windows)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+
 # 🏎️ Автоматическое заполнение БЭВМ
 
 ## ✨ Использование
@@ -12,5 +15,15 @@
 
 # 🛠️ Установка
 * Клонируйте репо
+    ```shell
+  git clone https://github.com/S1riyS/auto-OPD.git
+  ```
 * Создайте новое виртуальное окружение
-* Установите в него зависимости их `requirements.txt` (`pip install -r requirements.txt`)
+    ```shell
+  python -m venv venv
+  venv\Scripts\activate
+  ```
+* Установите в него зависимости из `requirements.txt`
+    ```shell
+  pip install -r requirements.txt
+  ```
